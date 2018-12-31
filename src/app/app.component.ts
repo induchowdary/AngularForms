@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'CustomizedComponent',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'proj';
+  title = 'Welcome to my page';
+//@Input('pfirstname') pfirstname = "Enter first name";
+
+  log(x){
+    console.log(x);
+  }
+  submit(x)
+  {
+    console.log(x);
+  }
 }
