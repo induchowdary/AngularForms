@@ -8,14 +8,14 @@
 <form #f=ngForm (ngSubmit)="submit(f)">
 <div class="form-group">
   <label required for="firstname">FirstName</label>
-  <input required minlength= "4" pattern="[A-Za-z]+[0-9]{1,}$" ngModel name="firstname"  #firstname=ngModel (change)="log(firstname)" id="firstname" type="text"  class="form-control"> 
+  <input required minlength= "4" pattern="[A-Za-z]+[0-9]{1,}$" ngModel name="firstname"  #firstname=ngModel (change)="log(f)" id="firstname" type="text"  class="form-control"> 
   <div class="alert alert-danger" *ngIf="!firstname.valid && firstname.touched">
     <div *ngIf="firstname.errors.required">Please enter your FirstName</div>
     <div *ngIf="firstname.errors.minlength">Please enter min 4 characters</div>
     <div *ngIf="firstname.errors.pattern">Pattern doesnt match. Please enter letters followed by a number atleast</div>
   </div>
 </div>
-<div name="Details" ngModelGroup="details" #details=ngModelGroup>
+<div name="Details" (change)="hello(f)" ngModelGroup="details" #details=ngModelGroup>
     <div class="form-group">
         <label for="address">Address</label>
         <input required ngModel name="address" #address=ngModel id="address" type="text" class="form-control">
@@ -32,7 +32,7 @@
     <label for="comment">Comment</label>
     <input ngModel name="comment" #comment=ngModel id="comment" type="text" class="form-control">
 </div>
-<button class="btn btn-primary">Submit</button>
+<button [disabled] = "!f.valid" class="btn btn-primary">Submit</button>
 </form>
 
 <router-outlet></router-outlet>

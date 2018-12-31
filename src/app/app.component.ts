@@ -11,9 +11,11 @@ export class AppComponent {
 
   log(x){
     console.log(x);
+    console.log(x.valid);
   }
   submit(x)
   {
     console.log(x);
   }
+  
 }
